@@ -28,7 +28,7 @@ const LandingSection = () => {
     initialValues: {
       firstName: "",
       email: "",
-      typeEnquiry: "",
+      type: "",
       comment: ""
     },
     onSubmit: async (value) => {
@@ -47,7 +47,7 @@ const LandingSection = () => {
     validationSchema: Yup.object({
       firstName: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
       email: Yup.string().email('Invalid email').required('Required'),
-      typeEnquiry: Yup.string().oneOf(optionValues, 'Please select a type').required("Required"),
+      type: Yup.string().oneOf(optionValues, 'Please select a type').required("Required"),
       comment: Yup.string().min(25, 'Must be at least 25 characters').max(100, 'Too Long!').required('Required'),
     }),
   });
@@ -89,17 +89,17 @@ const LandingSection = () => {
                 />
                 <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
               </FormControl>       
-              <FormControl isInvalid={formik.touched.typeEnquiry && formik.errors.typeEnquiry ? true : false}>                
-                <FormLabel htmlFor="typeEnquiry">Type of enquiry</FormLabel>
-                <Select id="typeEnquiry" name="typeEnquiry" onChange={formik.handleChange} style={{ color: "black" }}
+              <FormControl isInvalid={formik.touched.type && formik.errors.type ? true : false}>                
+                <FormLabel htmlFor="type">Type of enquiry</FormLabel>
+                <Select id="type" name="type" onChange={formik.handleChange} style={{ color: "black" }}
                   onBlur={formik.handleBlur}
-                  value={formik.values.typeEnquiry}>
+                  value={formik.values.type}>
                   <option value="">Select Enquiry type</option>
                   <option value="hireMe">Freelance project proposal</option>
                   <option value="openSource">Open source consultancy session</option>
                   <option value="other">Other</option>
                 </Select>
-                <FormErrorMessage>{formik.errors.typeEnquiry}</FormErrorMessage>
+                <FormErrorMessage>{formik.errors.type}</FormErrorMessage>
               </FormControl>
              
               <FormControl isInvalid={formik.touched.comment && formik.errors.comment ? true : false}>
