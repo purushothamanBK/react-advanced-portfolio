@@ -7,7 +7,7 @@ import {
   faMedium,
   faStackOverflow,
 } from "@fortawesome/free-brands-svg-icons";
-import { Box, HStack, position } from "@chakra-ui/react";
+import { Box, Container, HStack, position } from "@chakra-ui/react";
 
 const socials = [
   {
@@ -36,12 +36,12 @@ const Header = () => {
 
   const ref = useRef()
 
-  const handleScroll=()=>{
+  const handleScroll = () => {
     console.log("scrolling")
 
-    if(scrollUp){
+    if (scrollUp) {
       ref.current.translateY(-200)
-    } else{
+    } else {
       ref.current.translateY(0)
     }
   }
@@ -49,25 +49,25 @@ const Header = () => {
 
 
   const controlDirection = () => {
-      if(window.scrollY > oldScrollY) {
-        ref.current.style.transform = "translateY(-200px)"       
-      } else {
-        ref.current.style.transform = "translateY(0)"
-      }
-      oldScrollY = window.scrollY;
+    if (window.scrollY > oldScrollY) {
+      ref.current.style.transform = "translateY(-200px)"
+    } else {
+      ref.current.style.transform = "translateY(0)"
+    }
+    oldScrollY = window.scrollY;
   }
-  
+
   useEffect(() => {
-      window.addEventListener('scroll', controlDirection);
-      return () => {
-          window.removeEventListener('scroll', controlDirection);
-      };
-  },[]);
+    window.addEventListener('scroll', controlDirection);
+    return () => {
+      window.removeEventListener('scroll', controlDirection);
+    };
+  }, []);
   const handleClick = (e) => {
-      e.preventDefault();
+    e.preventDefault();
     const anchor = e.target.name
     console.log("clicked")
-   
+
     const id = `${anchor}-section`;
     console.log(id)
     const element = document.getElementById(id);
@@ -80,9 +80,9 @@ const Header = () => {
   };
 
   return (
-    <Box
 
-    zIndex="2"
+    <Box
+      zIndex="2"
       position="fixed"
       top={0}
       left={0}
@@ -91,10 +91,11 @@ const Header = () => {
       transitionProperty="transform"
       transitionDuration=".3s"
       transitionTimingFunction="ease-in-out"
-      backgroundColor="#18181b"   
+      backgroundColor="#18181b"
       ref={ref}
     >
       <Box color="white" maxWidth="1280px" margin="0 auto">
+      
         <HStack
           px={16}
           py={4}
@@ -103,21 +104,25 @@ const Header = () => {
         >
           <nav>
             <HStack spacing={2}>
-            {socials.map(item=>{
-              return <a href={item.url} key={item.url}><FontAwesomeIcon icon={item.icon} size="2x" /> </a>
-            })}
+              {socials.map(item => {
+                return <a href={item.url} key={item.url}><FontAwesomeIcon icon={item.icon} size="2x" /> </a>
+              })}
             </HStack>
-                      
+
           </nav>
           <nav>
             <HStack spacing={8}>
-             <a onClick={handleClick} name="projects" href="/#Projects" >Projects</a>
-             <a onClick={handleClick} name="contactme" href="/#contact-me" >Contact Me</a>
+              <a onClick={handleClick} name="projects" href="/#Projects" >Projects</a>
+              <a onClick={handleClick} name="contactme" href="/#contact-me" >Contact Me</a>
             </HStack>
           </nav>
         </HStack>
+       
+        
       </Box>
     </Box>
+
+
   );
 };
 export default Header;

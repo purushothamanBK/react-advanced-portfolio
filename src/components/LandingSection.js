@@ -18,8 +18,8 @@ const LandingSection = () => (
     <VStack> 
       <img src="https://i.pravatar.cc/150?img=7" alt="avatar"/>
       <a>{greeting}</a>
-      <h1>{bio1}</h1>
-      <h1>{bio2}</h1>
+      <Heading>{bio1}</Heading>
+      <Heading>{bio2}</Heading>
     </VStack>
   </FullScreenSection>
 );

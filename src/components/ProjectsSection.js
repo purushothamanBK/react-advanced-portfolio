@@ -36,9 +36,11 @@ const ProjectsSection = () => {
       backgroundColor="#14532d"
       isDarkBackground
       p={8}
-      alignItems="flex-start"
+      alignItems="flex-start"      
       spacing={8}
+      
     >
+      <Box maxWidth="800px">
       <Heading as="h1" id="projects-section">
         Featured Projects
       </Heading>
@@ -56,6 +58,8 @@ const ProjectsSection = () => {
           />
         ))}
       </Box>
+      </Box>
+      
     </FullScreenSection>
   );
 };
